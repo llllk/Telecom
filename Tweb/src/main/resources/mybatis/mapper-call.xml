@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powerhf.telecom.web.dao.CalllogDao" >
+
+    <select id="queryDatas" resultType="com.powerhf.telecom.web.bean.Calllog">
+        select
+            a.*,
+            b.username
+        from t_calllog a
+        join contact b on a.tel = b.tel
+        where a.tel = #{tel} and a.calltime like concat(#{calltime}, '__')
+    </select>
+</mapper>
